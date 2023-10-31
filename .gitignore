@@ -1,0 +1,6 @@
+node_modules
+listener.json
+speaker.json
+dist
+package-lock.json
+.vscode

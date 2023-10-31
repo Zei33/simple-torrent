@@ -1,0 +1,35 @@
+
+html, body {
+	width: 100%;
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+
+	color: rgb(227, 227, 227);
+	background-color: #1b1b1d;
+
+	font-family: 'Noto Sans', sans-serif;
+	font-weight: 400;
+}
+
+body {
+	padding: 8px;
+}
+
+.english {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.japanese {
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.light-text {
+	font-weight: 200;
+}
+
+.large-text
+	{
+	font-size: 64px;
+	}

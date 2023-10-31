@@ -1,0 +1,27 @@
+{
+  "name": "infinilang",
+  "version": "1.0.0",
+  "description": "Advanced language learning tool using AI.",
+  "main": "main.js",
+  "scripts": {
+	"clean": "rimraf dist/",
+	"copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf dist/",
+    "build": "npm run clean && tsc && npm run copy",
+    "start": "npm run build && electron dist/app.js"
+  },
+  "author": "Matthew Scott",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "copyfiles": "^2.4.1",
+    "electron": "^26.2.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^6.0.2",
+    "chalk": "^4.1.2",
+    "google-auth-library": "^9.0.0",
+    "node-record-lpcm16": "^1.0.1"
+  }
+}
