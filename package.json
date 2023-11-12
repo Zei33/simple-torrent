@@ -4,8 +4,8 @@
   "description": "Advanced language learning tool using AI.",
   "main": "main.js",
   "scripts": {
-	"clean": "rimraf dist/",
-	"copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf dist/",
+    "clean": "rimraf dist/",
+    "copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf src/**/*.js dist/",
     "build": "npm run clean && tsc && npm run copy",
     "start": "npm run build && electron dist/app.js"
   },
@@ -16,7 +16,8 @@
     "copyfiles": "^2.4.1",
     "electron": "^26.2.0",
     "rimraf": "^5.0.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "@google-cloud/speech": "^6.0.2",
