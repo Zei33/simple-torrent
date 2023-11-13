@@ -8,11 +8,11 @@ export default class Development {
 
 	private static getInfo = () => JSON.parse(fs.readFileSync(Development.infoPath, "utf-8"));
 
-	static init(window: Electron.BrowserWindow, ipcMain: Electron.IpcMain){console.log("Starting DEV");
+	static init(window: Electron.BrowserWindow, ipcMain: Electron.IpcMain){
 		Development.ipcMain = ipcMain;
 		Development.window = window;
 		
-		fs.watch(Development.infoPath, (eventType, filename) => {console.log("File changed " + eventType);console.log(Development.getInfo());
+		fs.watch(Development.infoPath, (eventType, filename) => {
 			Development.window.webContents.send("compiling", Development.getInfo().compiling);
 		});
 	}

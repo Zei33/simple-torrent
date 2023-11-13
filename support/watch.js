@@ -6,7 +6,6 @@ const child_process = require("child_process");
 
 const input = "src";
 const output = "dist";
-const vsDefaultSettings = { "editor.insertSpaces": false };
 
 const action = file => {
 	const stat = fs.statSync(file);
@@ -27,14 +26,6 @@ const action = file => {
 }
 
 const setCompiling = status => {
-	if (status){
-		const vsSettings = structuredClone(vsDefaultSettings);
-		vsSettings["files.watcherExclude"] = { "dist": true, "dist/**": true, "dist/**/*": true };
-		fs.writeFileSync("./.vscode/settings.json", JSON.stringify(vsSettings, 0, 2));
-	}else{
-		fs.writeFileSync("./.vscode/settings.json", JSON.stringify(vsDefaultSettings, 0, 2));
-	}
-	
 	const supportInfo = JSON.parse(fs.readFileSync(`.${path.sep}support${path.sep}info.json`));
 	supportInfo["compiling"] = status;
 	fs.writeFileSync("./support/info.json", JSON.stringify(supportInfo, 0, 2));
