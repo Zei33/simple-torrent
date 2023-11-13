@@ -1,10 +1,12 @@
 import path from "node:path";
+import Development from "./Development";
 
 export default class Main {
 	static app: Electron.App;
     static window: Electron.BrowserWindow | null;
     static BrowserWindow;
 	static ipcMain: Electron.IpcMain;
+	static development: Development;
 
     private static ready(){
         Main.window = new Main.BrowserWindow({ 
@@ -17,9 +19,11 @@ export default class Main {
         Main.window.loadFile(path.join(Main.app.getAppPath(), "renderer/views/index.html"));
         Main.window.on('closed', Main.close);
 
-		Main.window.webContents.openDevTools();
-
-		Main.ipcMain.handle('ping', () => 'pong');
+		
+		if (!Main.app.isPackaged){ 
+			Main.window.webContents.openDevTools();
+			Development.init(Main.window, Main.ipcMain);
+		}
     }
 
 	private static close(){

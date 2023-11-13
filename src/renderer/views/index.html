@@ -4,20 +4,24 @@
 	<head>
 		<title>InfiniLang</title>
 
-		<meta charset="UTF-8" />
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
-		<meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+		<meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
 
-		<link rel="stylesheet" href="../styles/inconsolata.css"/>
-		<link rel="stylesheet" href="../styles/noto-sans.css"/>
-		<link rel="stylesheet" href="../styles/noto-sans-jp.css"/>
-		<link rel="stylesheet" href="../styles/styles.css"/>
+		<link rel="stylesheet" href="../styles/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="../styles/css/inconsolata.css">
+		<link rel="stylesheet" href="../styles/css/noto-sans.css">
+		<link rel="stylesheet" href="../styles/css/noto-sans-jp.css">
+
+		<link rel="stylesheet" href="../styles/css/styles.css">
 	</head>
 
 	<body>
-		<p class="english light-text large-text">Whereas recognition of the inherent dignity</p>
-		<p class="japanese light-text large-text">ありがとうございます</p>
+		<div id="compiling-status"></div>
 	</body>
 
+	<script src="../scripts/bootstrap.bundle.min.js"></script>
 	<script src="../renderer.js"></script>
 </html>

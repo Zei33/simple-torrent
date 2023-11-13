@@ -1,10 +1,4 @@
-// const info = document.getElementById("info");
-// info.innerText = `This app is using Chrome v${versions.chrome()}`;
-
-// const fn = async () => {
-// 	const response = await window.versions.ping();
-// 	info.innerText = response;
-// }
-
-// fn();
-
+window.development.compiling((_event, status) => {
+	if (status) document.querySelector("#compiling-status").classList.add("compiling")
+	else document.querySelector("#compiling-status").classList.remove("compiling");
+});

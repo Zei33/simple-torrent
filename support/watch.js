@@ -8,10 +8,14 @@ const input = "src";
 const output = "dist";
 const vsDefaultSettings = { "editor.insertSpaces": false };
 
-const action = (file, stat) => {
+const action = file => {
+	const stat = fs.statSync(file);
+	const extension = path.extname(file);
 	if (stat.isFile()){
-		if (path.extname(file) == ".ts"){
+		if (extension == ".ts"){
 			return "typescript";
+		}else if (extension == ".scss"){
+			return "sass";
 		}else{
 			return "file";
 		}
@@ -31,13 +35,13 @@ const setCompiling = status => {
 		fs.writeFileSync("./.vscode/settings.json", JSON.stringify(vsDefaultSettings, 0, 2));
 	}
 	
-	const supportInfo = JSON.parse(fs.readFileSync("./support/info.json"));
+	const supportInfo = JSON.parse(fs.readFileSync(`.${path.sep}support${path.sep}info.json`));
 	supportInfo["compiling"] = status;
 	fs.writeFileSync("./support/info.json", JSON.stringify(supportInfo, 0, 2));
 }
 
 const isCompiling = () => {
-	return JSON.parse(fs.readFileSync("./support/info.json"))["compiling"];
+	return JSON.parse(fs.readFileSync(`.${path.sep}support${path.sep}info.json`, "utf-8"))["compiling"];
 }
 
 const compileTypescript = file => {
@@ -59,38 +63,52 @@ const copyFile = file => {
 	});
 }
 
-watch.createMonitor(input, monitor => {
-	monitor.on("created", (file, stat) => {
-		try {
-			switch(action(file, stat)){
-				case "typescript": compileTypescript(file); break;
-				case "file": copyFile(file); break;
-				default: null;
-			}
-		} catch {
-			setCompiling(false);
+fs.watch(input, { recursive: true }, (eventType, file) => {
+	file = path.join(input, file);
+	if (fs.existsSync(file)){
+		switch(action(file)){
+			case "typescript": compileTypescript(file); break;
+			case "file": copyFile(file); break;
+			default: null;
 		}
-	});
-
-	monitor.on("changed", (file, currentStat, previousStat) => {
-		try {
-			switch(action(file, currentStat)){
-				case "typescript": compileTypescript(file); break;
-				case "file": copyFile(file); break;
-				default: null;
-			}
-		} catch {
-			setCompiling(false);
-		}
-	});
-
-	monitor.on("removed", (file, stat) => {
-		try {
-			compileTypescript(file);
-		} catch {
-			setCompiling(false);
-		}
-	});
+	}else{
+		compileTypescript(file);
+	}
 });
 
+// watch.createMonitor(input, monitor => {
+// 	monitor.on("created", (file, stat) => {
+// 		try {
+// 			switch(action(file, stat)){
+// 				case "typescript": compileTypescript(file); break;
+// 				case "file": copyFile(file); break;
+// 				default: null;
+// 			}
+// 		} catch {
+// 			setCompiling(false);
+// 		}
+// 	});
+
+// 	monitor.on("changed", (file, currentStat, previousStat) => {
+// 		try {
+// 			switch(action(file, currentStat)){
+// 				case "typescript": compileTypescript(file); break;
+// 				case "file": copyFile(file); break;
+// 				default: null;
+// 			}
+// 		} catch {
+// 			setCompiling(false);
+// 		}
+// 	});
+
+// 	monitor.on("removed", (file, stat) => {
+// 		try {
+// 			compileTypescript(file);
+// 		} catch {
+// 			setCompiling(false);
+// 		}
+// 	});
+// });
+
+console.log(`Watching for file changes...`);
 setCompiling(false);

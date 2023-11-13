@@ -25,11 +25,22 @@ body {
 	font-family: 'Noto Sans JP', sans-serif;
 }
 
-.light-text {
-	font-weight: 200;
+#compiling-status {
+	width: 32px;
+	height: 32px;
+
+	top: 4px;
+	right: 4px;
+
+	position: fixed;
+	
+	z-index: 1000;
+
+	border-radius: 50%;
+
+	background-color: rgba(0, 200, 0, 0.8);
 }
 
-.large-text
-	{
-	font-size: 64px;
-	}
+#compiling-status.compiling {
+	background-color: rgba(200, 0, 0, 0.8);
+}
