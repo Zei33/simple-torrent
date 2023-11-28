@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from "electron";
-import { Google, Listener } from "./classes/google";
+import { Google, Listener } from "./classes/Google";
 import Main from "./classes/Main";
 
 // (async () => {
@@ -7,4 +7,4 @@ import Main from "./classes/Main";
 // 	listener.record();
 // })();
 
-Main.init(app, BrowserWindow, ipcMain);
+Main.init();

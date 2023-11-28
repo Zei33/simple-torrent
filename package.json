@@ -5,10 +5,11 @@
   "main": "main.js",
   "scripts": {
     "clean": "rimraf dist/",
-    "copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf src/**/*.js dist/",
+    "copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf src/**/*.js src/**/*.min.js src/**/*.min.css src/**/*.map dist/",
     "build": "npm run clean && tsc && npm run copy",
     "start": "electron dist/app.js",
-	"scss": "sass --watch src/renderer/styles/scss:src/renderer/styles/css"
+	"scss": "sass --watch src/renderer/scss:src/renderer/styles",
+	"watch": "node support/watch.js"
   },
   "author": "Matthew Scott",
   "license": "UNLICENSED",

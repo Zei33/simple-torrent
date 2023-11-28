@@ -1,0 +1,53 @@
+html, body, main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(227, 227, 227);
+  background-color: #1b1b1d;
+  font-family: "Noto Sans", monospace;
+  font-weight: 400;
+  display: block;
+}
+
+/* Font defaults are set to the opposite of what they should be to quickly identify issues. */
+.english {
+  font-family: "Noto Sans", monospace;
+}
+
+.japanese {
+  font-family: "Noto Sans JP", monospace;
+}
+
+.monospace {
+  font-family: "Inconsolata", sans-serif;
+}
+
+.infinilang {
+  font-family: "Red Hat Display", monospace;
+}
+
+.logo-main {
+  font-family: "Red Hat Display", monospace;
+  font-size: calc(1.625rem + 4.5vw);
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(227, 227, 227);
+}
+
+.logo-sub {
+  font-family: "Noto Sans", monospace;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #771313;
+  margin-left: 4px;
+  margin-top: -12px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(204, 204, 204);
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -6,20 +6,24 @@
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-		<meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+		<!-- Remove unsafe-inline for distribution -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; script-src 'self'">
+		<meta http-equiv="X-Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; script-src 'self'">
 
-		<link rel="stylesheet" href="../styles/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../styles/bootstrap.min.css">
 
-		<link rel="stylesheet" href="../styles/css/inconsolata.css">
-		<link rel="stylesheet" href="../styles/css/noto-sans.css">
-		<link rel="stylesheet" href="../styles/css/noto-sans-jp.css">
+		<link rel="stylesheet" href="../styles/inconsolata.css">
+		<link rel="stylesheet" href="../styles/noto-sans.css">
+		<link rel="stylesheet" href="../styles/noto-sans-jp.css">
+		<link rel="stylesheet" href="../styles/red-hat.css">
 
-		<link rel="stylesheet" href="../styles/css/styles.css">
+		<link rel="stylesheet" href="../styles/styles.css">
+		<link rel="stylesheet" href="../styles/main-menu.css">
+		<link rel="stylesheet" href="../styles/development.css">
 	</head>
 
 	<body>
-		<div id="compiling-status"></div>
+		<main></main>
 	</body>
 
 	<script src="../scripts/bootstrap.bundle.min.js"></script>

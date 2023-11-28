@@ -15,6 +15,8 @@ const action = file => {
 			return "typescript";
 		}else if (extension == ".scss"){
 			return "sass";
+		}else if (extension == ".DS_Store"){
+			return "trash";
 		}else{
 			return "file";
 		}

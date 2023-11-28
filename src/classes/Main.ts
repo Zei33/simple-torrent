@@ -1,28 +1,37 @@
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
+
+import ViewControl from "./ViewControl";
 import Development from "./Development";
 
 export default class Main {
 	static app: Electron.App;
     static window: Electron.BrowserWindow | null;
-    static BrowserWindow;
 	static ipcMain: Electron.IpcMain;
-	static development: Development;
+
+	static init(){
+        Main.app = app;
+        Main.app.on('window-all-closed', Main.windowsClosed);
+        Main.app.on('ready', Main.ready);
+		Main.ipcMain = ipcMain;
+    }
 
     private static ready(){
-        Main.window = new Main.BrowserWindow({ 
-			width: 800, 
-			height: 600, 
+        Main.window = new BrowserWindow({ 
+			width: 1000, 
+			height: 800, 
 			webPreferences: { 
-				preload: path.join(Main.app.getAppPath(), "preload/preload.js") 
+				preload: path.join(Main.app.getAppPath(), `preload${path.sep}preload.js`) 
 			} 
 		});
-        Main.window.loadFile(path.join(Main.app.getAppPath(), "renderer/views/index.html"));
-        Main.window.on('closed', Main.close);
-
+        Main.window.loadFile(path.join(Main.app.getAppPath(), `renderer${path.sep}views${path.sep}index.html`));
+        Main.window.on("closed", Main.close);
+		ViewControl.init(Main.app, Main.window, Main.ipcMain);
 		
 		if (!Main.app.isPackaged){ 
 			Main.window.webContents.openDevTools();
 			Development.init(Main.window, Main.ipcMain);
+			Main.window.webContents.on("did-finish-load", () => Development.sendCompilingStatus());
 		}
     }
 
@@ -32,13 +41,5 @@ export default class Main {
 
 	private static windowsClosed(){
         if (process.platform !== 'darwin') Main.app.quit();
-    }
-
-    static init(app: Electron.App, browserWindow: typeof Electron.BrowserWindow, ipcMain: Electron.IpcMain){
-        Main.BrowserWindow = browserWindow;
-        Main.app = app;
-        Main.app.on('window-all-closed', Main.windowsClosed);
-        Main.app.on('ready', Main.ready);
-		Main.ipcMain = ipcMain;
     }
 }

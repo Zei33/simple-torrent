@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const { JWT } = require("google-auth-library");
 //const key = require(path.join(path.dirname(require.main.filename), "listener.json"));
 
-import { Listener } from "./google/listener";
+import { Listener } from "./google/Listener";
 
 class Google {
 	static async credentials(){

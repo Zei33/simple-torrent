@@ -8,12 +8,14 @@ export default class Development {
 
 	private static getInfo = () => JSON.parse(fs.readFileSync(Development.infoPath, "utf-8"));
 
+	static sendCompilingStatus = () => Development.window.webContents.send("compiling", Development.getInfo().compiling);
+
 	static init(window: Electron.BrowserWindow, ipcMain: Electron.IpcMain){
 		Development.ipcMain = ipcMain;
 		Development.window = window;
 		
 		fs.watch(Development.infoPath, (eventType, filename) => {
-			Development.window.webContents.send("compiling", Development.getInfo().compiling);
+			Development.sendCompilingStatus();
 		});
 	}
 }
