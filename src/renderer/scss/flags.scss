@@ -1,0 +1,57 @@
+flag {
+	$width: 1;
+	$height: 0.5;
+
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	display: block;
+
+	$countries: 
+		"britain" 60 30 "../images/country_flags/gb.svg",
+		"japan" 900 600 "../images/country_flags/jp.svg",
+		"australia" 8192 4096 "../images/country_flags/au.svg",
+		"vietnam" 45 30 "../images/country_flags/vn.svg";
+
+	// Height is always going to be 1 unless exceptions are introduced.
+	@each $country, $width, $height, $image in $countries {
+		&.#{$country} {
+			background-image: url($image);
+
+			&.xs {
+				width: calc(3vw * calc($width / $height));
+				height: calc(3vw * calc($height / $height));
+
+				border-radius: 4px;
+			}
+		
+			&.sm {
+				width: calc(6vw * calc($width / $height));
+				height: calc(6vw * calc($height / $height));
+
+				border-radius: 6px;
+			}
+			
+			&.md {
+				width: calc(9vw * calc($width / $height));
+				height: calc(9vw * calc($height / $height));
+
+				border-radius: 8px;
+			}
+			
+			&.lg {
+				width: calc(12vw * calc($width / $height));
+				height: calc(12vw * calc($height / $height));
+
+				border-radius: 10px;
+			}
+			
+			&.xl {
+				width: calc(15vw * calc($width / $height));
+				height: calc(15vw * calc($height / $height));
+
+				border-radius: 12px;
+			}
+		}
+	}
+}

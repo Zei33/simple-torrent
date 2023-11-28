@@ -16,7 +16,7 @@ html, body, main {
 }
 
 /* Font defaults are set to the opposite of what they should be to quickly identify issues. */
-.english {
+.english, .vietnamese {
 	font-family: 'Noto Sans', monospace;
 }
 
@@ -44,7 +44,7 @@ html, body, main {
 	font-family: 'Noto Sans', monospace;
 	font-size: 1.25rem;
 	font-weight: 300;
-	color: #771313;
+	color: #2169aa;
 	
 	margin-left: 4px;
 	margin-top: -12px;
@@ -55,3 +55,4 @@ html, body, main {
 	height: 1px;
 	background-color: rgb(204, 204, 204);
 }
+

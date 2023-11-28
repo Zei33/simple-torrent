@@ -6,12 +6,15 @@ const child_process = require("child_process");
 
 const input = "src";
 const output = "dist";
+const ignore = ".DS_Store";
 
 const action = file => {
 	const stat = fs.statSync(file);
 	const extension = path.extname(file);
 	if (stat.isFile()){
-		if (extension == ".ts"){
+		if (ignore.includes(path.basename(file))){
+			return "ignore";
+		}else if (extension == ".ts"){
 			return "typescript";
 		}else if (extension == ".scss"){
 			return "sass";
@@ -68,40 +71,6 @@ fs.watch(input, { recursive: true }, (eventType, file) => {
 		compileTypescript(file);
 	}
 });
-
-// watch.createMonitor(input, monitor => {
-// 	monitor.on("created", (file, stat) => {
-// 		try {
-// 			switch(action(file, stat)){
-// 				case "typescript": compileTypescript(file); break;
-// 				case "file": copyFile(file); break;
-// 				default: null;
-// 			}
-// 		} catch {
-// 			setCompiling(false);
-// 		}
-// 	});
-
-// 	monitor.on("changed", (file, currentStat, previousStat) => {
-// 		try {
-// 			switch(action(file, currentStat)){
-// 				case "typescript": compileTypescript(file); break;
-// 				case "file": copyFile(file); break;
-// 				default: null;
-// 			}
-// 		} catch {
-// 			setCompiling(false);
-// 		}
-// 	});
-
-// 	monitor.on("removed", (file, stat) => {
-// 		try {
-// 			compileTypescript(file);
-// 		} catch {
-// 			setCompiling(false);
-// 		}
-// 	});
-// });
 
 console.log(`Watching for file changes...`);
 setCompiling(false);

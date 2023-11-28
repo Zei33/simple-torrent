@@ -1,0 +1,119 @@
+flag {
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+}
+flag.britain {
+  background-image: url("../images/country_flags/gb.svg");
+}
+flag.britain.xs {
+  width: 6vw;
+  height: 3vw;
+  border-radius: 4px;
+}
+flag.britain.sm {
+  width: 12vw;
+  height: 6vw;
+  border-radius: 6px;
+}
+flag.britain.md {
+  width: 18vw;
+  height: 9vw;
+  border-radius: 8px;
+}
+flag.britain.lg {
+  width: 24vw;
+  height: 12vw;
+  border-radius: 10px;
+}
+flag.britain.xl {
+  width: 30vw;
+  height: 15vw;
+  border-radius: 12px;
+}
+flag.japan {
+  background-image: url("../images/country_flags/jp.svg");
+}
+flag.japan.xs {
+  width: 4.5vw;
+  height: 3vw;
+  border-radius: 4px;
+}
+flag.japan.sm {
+  width: 9vw;
+  height: 6vw;
+  border-radius: 6px;
+}
+flag.japan.md {
+  width: 13.5vw;
+  height: 9vw;
+  border-radius: 8px;
+}
+flag.japan.lg {
+  width: 18vw;
+  height: 12vw;
+  border-radius: 10px;
+}
+flag.japan.xl {
+  width: 22.5vw;
+  height: 15vw;
+  border-radius: 12px;
+}
+flag.australia {
+  background-image: url("../images/country_flags/au.svg");
+}
+flag.australia.xs {
+  width: 6vw;
+  height: 3vw;
+  border-radius: 4px;
+}
+flag.australia.sm {
+  width: 12vw;
+  height: 6vw;
+  border-radius: 6px;
+}
+flag.australia.md {
+  width: 18vw;
+  height: 9vw;
+  border-radius: 8px;
+}
+flag.australia.lg {
+  width: 24vw;
+  height: 12vw;
+  border-radius: 10px;
+}
+flag.australia.xl {
+  width: 30vw;
+  height: 15vw;
+  border-radius: 12px;
+}
+flag.vietnam {
+  background-image: url("../images/country_flags/vn.svg");
+}
+flag.vietnam.xs {
+  width: 4.5vw;
+  height: 3vw;
+  border-radius: 4px;
+}
+flag.vietnam.sm {
+  width: 9vw;
+  height: 6vw;
+  border-radius: 6px;
+}
+flag.vietnam.md {
+  width: 13.5vw;
+  height: 9vw;
+  border-radius: 8px;
+}
+flag.vietnam.lg {
+  width: 18vw;
+  height: 12vw;
+  border-radius: 10px;
+}
+flag.vietnam.xl {
+  width: 22.5vw;
+  height: 15vw;
+  border-radius: 12px;
+}
+
+/*# sourceMappingURL=flags.css.map */
