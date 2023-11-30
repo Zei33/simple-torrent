@@ -5,11 +5,11 @@
   "main": "main.js",
   "scripts": {
     "clean": "rimraf dist/",
-    "copy": "copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ttf src/**/*.js src/**/*.svg src/**/*.min.js src/**/*.min.css src/**/*.map dist/",
+    "copy": "copyfiles -u 1 \"src/**/*.html\" \"src/**/*.css\" \"src/**/*.ttf\" \"src/**/*.js\" \"src/**/*.svg\" \"src/**/*.min.js\" \"src/**/*.min.css\" \"src/**/*.map\" dist/",
     "build": "npm run clean && tsc && npm run copy",
     "start": "electron dist/app.js",
-	"scss": "sass --watch src/renderer/scss:src/renderer/styles",
-	"watch": "node support/watch.js"
+    "scss": "sass --watch src/renderer/scss:src/renderer/styles",
+    "watch": "node support/watch.js"
   },
   "author": "Matthew Scott",
   "license": "UNLICENSED",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@google-cloud/speech": "^6.0.2",
     "chalk": "^4.1.2",
+    "electron-store": "^8.1.0",
     "google-auth-library": "^9.0.0",
     "node-record-lpcm16": "^1.0.1"
   }

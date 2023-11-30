@@ -19,9 +19,7 @@ export default class ViewControl {
 	}
 
 	static registerView(view, callback){
-		console.log(`Registering view ${view}.`);
 		ViewControl.ipcMain.on(`load-${view}`, (event, data) => {
-			console.log(`Loading view ${view}.`);
 			ViewControl.window.webContents.send(`show-${view}`, { content: callback(data) });
 		});
 	}

@@ -13,3 +13,11 @@ contextBridge.exposeInMainWorld("loadView", {
 contextBridge.exposeInMainWorld("showView", {
 	mainMenu: callback => ipcRenderer.on("show-main-menu", callback)
 });
+
+contextBridge.exposeInMainWorld("storage", {
+	set: (key, value) => ipcRenderer.send("storage-set", { key, value }),
+	get: key => new Promise((resolve, reject) => {
+		ipcRenderer.send("storage-get", key);
+		ipcRenderer.on(`storage-get-${key}`, (event, value) => { resolve(value) });
+	})
+});

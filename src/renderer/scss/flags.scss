@@ -4,14 +4,18 @@ flag {
 
 	background-repeat: no-repeat;
 	background-position: center center;
+	background-size: cover;
 
 	display: block;
 
 	$countries: 
 		"britain" 60 30 "../images/country_flags/gb.svg",
+		"britain2" 1000 600 "../images/country_flags/gb-3-5.svg",
 		"japan" 900 600 "../images/country_flags/jp.svg",
 		"australia" 8192 4096 "../images/country_flags/au.svg",
-		"vietnam" 45 30 "../images/country_flags/vn.svg";
+		"vietnam" 45 30 "../images/country_flags/vn.svg",
+		"us" 7410 3900 "../images/country_flags/us.svg",
+		"np" 60 80 "../images/country_flags/np.svg";
 
 	// Height is always going to be 1 unless exceptions are introduced.
 	@each $country, $width, $height, $image in $countries {
@@ -54,4 +58,45 @@ flag {
 			}
 		}
 	}
+}
+
+.flag-restrictor {
+	overflow-x: hidden;
+
+	&.xs {
+		width: 4.5vw;
+
+		border-radius: 4px;
+	}
+
+	&.sm {
+		width: 9vw;
+
+		border-radius: 6px;
+	}
+
+	&.md {
+		width: 13.5vw;
+
+		border-radius: 8px;
+	}
+
+	&.lg {
+		width: 18vw;
+
+		border-radius: 10px;
+	}
+
+	&.xl {
+		width: 22.5vw;
+
+		border-radius: 12px;
+	}
+}
+
+.flag-restrictor flag {
+	position: relative;
+
+	left: 50%;
+	transform: translateX(-50%);
 }

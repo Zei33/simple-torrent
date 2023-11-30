@@ -7,9 +7,13 @@
 
 	cursor: pointer;
 
-	transition: background-color .2s;
+	transition: background-color .2s, transform .15s ease-in;
 
 	&:hover {
 		background-color: rgba(196, 196, 196, 0.3);
+	}
+
+	&.clicked {
+		transform: scale(1.05);
 	}
 }

@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
+import Store from "electron-store";
 
 import ViewControl from "./ViewControl";
 import Development from "./Development";
@@ -8,12 +9,14 @@ export default class Main {
 	static app: Electron.App;
     static window: Electron.BrowserWindow | null;
 	static ipcMain: Electron.IpcMain;
+	static storage: Store;
 
 	static init(){
         Main.app = app;
         Main.app.on('window-all-closed', Main.windowsClosed);
         Main.app.on('ready', Main.ready);
 		Main.ipcMain = ipcMain;
+		Main.storage = new Store();
     }
 
     private static ready(){
@@ -33,6 +36,8 @@ export default class Main {
 			Development.init(Main.window, Main.ipcMain);
 			Main.window.webContents.on("did-finish-load", () => Development.sendCompilingStatus());
 		}
+
+		Main.registerStorageCommands();
     }
 
 	private static close(){
@@ -42,4 +47,9 @@ export default class Main {
 	private static windowsClosed(){
         if (process.platform !== 'darwin') Main.app.quit();
     }
+
+	private static registerStorageCommands(){console.log("REGISTERING");
+		Main.ipcMain.on("storage-set", (event, data) => {console.log("STEEL 1");Main.storage.set(data.key, data.value) });
+		Main.ipcMain.on("storage-get", (event, key) => {console.log("STEEL 3");Main.window.webContents.send(`storage-get-${key}`, Main.storage.get(key))});
+	}
 }
