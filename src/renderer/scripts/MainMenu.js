@@ -42,13 +42,14 @@ class Questions {
 			labelElement.textContent = language.label;
 			containerElement.appendChild(labelElement);
 		}
-
+		
 		this.bindFirstLanguageOptions(document.querySelectorAll(`#menu-options > .option`));
 	}
 
 	static bindFirstLanguageOptions(elements){
 		elements.addEventAll("click", async function(event){
-			setTimeout(() => this.classList.remove("clicked"), 200);
+			this.classList.add("clicked");
+			setTimeout(() => this.classList.remove("clicked"), 150);
 			
 			window.storage.set("firstLanguage", this.getAttribute("language-code"));
 		})

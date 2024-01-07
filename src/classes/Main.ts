@@ -48,8 +48,8 @@ export default class Main {
         if (process.platform !== 'darwin') Main.app.quit();
     }
 
-	private static registerStorageCommands(){console.log("REGISTERING");
-		Main.ipcMain.on("storage-set", (event, data) => {console.log("STEEL 1");Main.storage.set(data.key, data.value) });
-		Main.ipcMain.on("storage-get", (event, key) => {console.log("STEEL 3");Main.window.webContents.send(`storage-get-${key}`, Main.storage.get(key))});
+	private static registerStorageCommands(){
+		Main.ipcMain.on("storage-set", (event, data) => Main.storage.set(data.key, data.value));
+		Main.ipcMain.on("storage-get", (event, key) => Main.window.webContents.send(`storage-get-${key}`, Main.storage.get(key)));
 	}
 }

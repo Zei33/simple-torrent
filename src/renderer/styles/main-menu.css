@@ -3,7 +3,7 @@
   background-color: rgba(196, 196, 196, 0);
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.15s ease-in;
+  transition: background-color 0.2s, transform 0.1s ease-in;
 }
 #menu-options .option:hover {
   background-color: rgba(196, 196, 196, 0.3);

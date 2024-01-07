@@ -18,6 +18,6 @@ contextBridge.exposeInMainWorld("storage", {
 	set: (key, value) => ipcRenderer.send("storage-set", { key, value }),
 	get: key => new Promise((resolve, reject) => {
 		ipcRenderer.send("storage-get", key);
-		ipcRenderer.on(`storage-get-${key}`, (event, value) => { resolve(value) });
+		ipcRenderer.on(`storage-get-${key}`, (event, value) => resolve(value));
 	})
 });
